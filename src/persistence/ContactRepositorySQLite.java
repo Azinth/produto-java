@@ -25,10 +25,10 @@ public class ContactRepositorySQLite implements ContactRepository {
 		try {
 			con = DriverManager.getConnection(Constants.URL);
 			prepStmt = con.prepareStatement(sql);
-			prepStmt.setString(1, contact.getFirstName());
-			prepStmt.setString(2, contact.getLastName());
-			prepStmt.setString(3, contact.getEmail());
-			prepStmt.setString(4, contact.getPhone());
+			prepStmt.setString(1, contact.getProductName());
+			prepStmt.setString(2, contact.getCategoria());
+			prepStmt.setString(3, contact.getValidade());
+			prepStmt.setString(4, contact.getFabricacao());
 			prepStmt.executeUpdate();
 			prepStmt.close();
 		}catch(SQLException ex) {
@@ -160,10 +160,10 @@ public class ContactRepositorySQLite implements ContactRepository {
 		try {
 			con = DriverManager.getConnection(Constants.URL);
 			prepStmt = con.prepareStatement(sql);
-			prepStmt.setString(1, contact.getFirstName());
-			prepStmt.setString(2, contact.getLastName());
-			prepStmt.setString(3, contact.getEmail());
-			prepStmt.setString(4, contact.getPhone());
+			prepStmt.setString(1, contact.getProductName());
+			prepStmt.setString(2, contact.getCategoria());
+			prepStmt.setString(3, contact.getValidade());
+			prepStmt.setString(4, contact.getFabricacao());
 			prepStmt.setInt(5, contact.getId());
 			prepStmt.executeUpdate();
 			prepStmt.close();

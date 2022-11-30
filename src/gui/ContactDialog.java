@@ -2,6 +2,7 @@ package gui;
 
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
+import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -21,43 +22,43 @@ public class ContactDialog extends JDialog implements ActionListener {
 
 	private JButton btnAction, btnCancel;
 
-	private JTextField tfFirstName, tfLastName, tfPhone, tfEmail;
+	private JTextField productName, categoria, fabricacao, validade;
 
 	public ContactDialog(JFrame owner, Contact contact) {
 		super(owner, true);
 		setLocationRelativeTo(owner);
 
-		tfFirstName = new JTextField(15);
-		tfLastName = new JTextField(15);
-		tfPhone = new JTextField(15);
-		tfEmail = new JTextField(15);
+		productName = new JTextField(15);
+		categoria = new JTextField(15);
+		fabricacao = new JTextField(15);
+		validade = new JTextField(15);
 
 		if (contact != null) {
 			this.contact = contact;
 			btnAction = new JButton("Editar");
-			setTitle("Editar Contato");
+			setTitle("Editar Produto");
 
-			tfFirstName.setText(contact.getFirstName());
-			tfLastName.setText(contact.getLastName());
-			tfPhone.setText(contact.getPhone());
-			tfEmail.setText(contact.getEmail());
+			productName.setText(contact.getProductName());
+			categoria.setText(contact.getCategoria());
+			fabricacao.setText(contact.getFabricacao());
+			validade.setText(contact.getValidade());
 		} else {
 			this.contact = new Contact();
 			btnAction = new JButton("Adicionar");
-			setTitle("Adicionar Contato");
+			setTitle("Adicionar Produto");
 		}
-		setSize(275, 180);
-		setLayout(new BorderLayout());
+		setSize(400, 170);
+		setLayout(new FlowLayout());
 
-		JPanel panelFields = new JPanel(new FlowLayout(FlowLayout.RIGHT));
-		panelFields.add(new JLabel("Nome"));
-		panelFields.add(tfFirstName);
-		panelFields.add(new JLabel("Sobrenome"));
-		panelFields.add(tfLastName);
-		panelFields.add(new JLabel("Telefone"));
-		panelFields.add(tfPhone);
-		panelFields.add(new JLabel("E-mail"));
-		panelFields.add(tfEmail);
+		JPanel panelFields = new JPanel(new GridLayout(4,2));
+		panelFields.add(new JLabel("Nome do Produto:"));
+		panelFields.add(productName);
+		panelFields.add(new JLabel("Categoria:"));
+		panelFields.add(categoria);
+		panelFields.add(new JLabel("Fabricação:"));
+		panelFields.add(fabricacao);
+		panelFields.add(new JLabel("Validade:"));
+		panelFields.add(validade);
 
 		JPanel panelButtons = new JPanel(new FlowLayout());
 		btnCancel = new JButton("Cancelar");
@@ -79,29 +80,29 @@ public class ContactDialog extends JDialog implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		String firstName = tfFirstName.getText().trim();
-		String lastName = tfLastName.getText().trim();
-		String phone = tfPhone.getText().trim();
-		String email = tfEmail.getText().trim();
+		String product1 = productName.getText().trim();
+		String categoria1 = categoria.getText().trim();
+		String fabricacao1 = fabricacao.getText().trim();
+		String validade1 = validade.getText().trim();
 
 		
 		if (e.getSource() == btnCancel) {
 			contact = null;
 		} else {
-			if (firstName.equals("") || lastName.equals("")) {
-				JOptionPane.showMessageDialog(this, "Prencha o nome e sobrenome do contato");
+			if (productName.equals("") || categoria.equals("")) {
+				JOptionPane.showMessageDialog(this, "Prencha o nome do propoduto e categoria");
 				return;
 			}
 			
-			if(!email.equals("")&& !email.matches("^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$")) {
+			/*if(!validade.equals("")&& !validade.matches("^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$")) {
 				JOptionPane.showMessageDialog(this, "E-mail inválido");
 				return;
-			}
+			}*/
 			
-			contact.setFirstName(firstName);
-			contact.setLastName(lastName);
-			contact.setPhone(phone);
-			contact.setEmail(email);
+			contact.setProductName(product1);
+			contact.setCategoria(categoria1);
+			contact.setFabricacao(fabricacao1);
+			contact.setValidade(validade1);
 		}
 		setVisible(false);
 
