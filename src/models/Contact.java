@@ -2,68 +2,68 @@ package models;
 
 public class Contact {
 	private int id; 
-	private String firstName;
-	private String lastName;
-	private String phone;
-	private String email;
+	private String productName;
+	private String categoria;
+	private String fabricacao;
+	private String validade;
 	
 	public Contact() {}
 	
-	public Contact(String firstName, String lastName, String phone, String email) {
+	public Contact(String productName, String categoria, String fabricacao, String validade) {
 		super();
-		this.firstName = firstName;
-		this.lastName = lastName;
-		this.phone = phone;
-		this.email = email;
+		this.productName = productName;
+		this.categoria = categoria;
+		this.fabricacao = fabricacao;
+		this.validade = validade;
 	}
-	public Contact(int id, String firstName, String lastName, String phone, String email) {
-		this(firstName, lastName, phone, email);
+	public Contact(int id, String productName, String categoria, String fabricacao, String validade) {
+		this(productName, categoria, fabricacao, validade);
 		setId(id);
 	}
 	
-	public Contact(String firstName, String lastName, String phone) {
+	public Contact(String productName, String categoria, String fabricacao) {
 		super();
-		this.firstName = firstName;
-		this.lastName = lastName;
-		this.phone = phone;
+		this.productName = productName;
+		this.categoria = categoria;
+		this.fabricacao = fabricacao;
 	}
 	
-	public Contact(String firstName, String lastName) {
+	public Contact(String productName, String categoria) {
 		super();
-		this.firstName = firstName;
-		this.lastName = lastName;
+		this.productName = productName;
+		this.categoria = categoria;
 	}
 
-	public String getFirstName() {
-		return firstName;
+	public String getProductName() {
+		return productName;
 	}
 	
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
+	public void setProductName(String productName) {
+		this.productName = productName;
 	}
 	
-	public String getLastName() {
-		return lastName;
+	public String getCategoria() {
+		return categoria;
 	}
 	
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
+	public void setCategoria(String categoria) {
+		this.categoria = categoria;
 	}
 	
-	public String getPhone() {
-		return phone;
+	public String getFabricacao() {
+		return fabricacao;
 	}
 	
-	public void setPhone(String phone) {
-		this.phone = phone;
+	public void setFabricacao(String fabricacao) {
+		this.fabricacao = fabricacao;
 	}
 	
-	public String getEmail() {
-		return email;
+	public String getValidade() {
+		return validade;
 	}
 	
-	public void setEmail(String email) {
-		this.email = email;
+	public void setValidade(String validade) {
+		this.validade = validade;
 	}
 	
 	public void setId(int id) {
@@ -76,12 +76,12 @@ public class Contact {
 
 	@Override
 	public String toString() {
-		String s = id+" "+ firstName+ " "+lastName;
-		if(phone!=null && !phone.trim().equals("")) {
-			s+= " - "+ phone;
+		String s = id+" "+ productName+ " "+categoria;
+		if(fabricacao!=null && !fabricacao.trim().equals("")) {
+			s+= " - "+ fabricacao;
 		}
-		if(email!=null && !email.trim().equals("")) {
-			s+= " - "+ email;
+		if(validade!=null && !validade.trim().equals("")) {
+			s+= " - "+ validade;
 		}
 		return s;
 	}
